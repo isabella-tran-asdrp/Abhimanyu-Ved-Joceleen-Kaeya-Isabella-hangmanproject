@@ -1,0 +1,55 @@
+import random
+
+words = ["lasagna", "hangman", "sinner", "carlos", "variable"]
+
+print("Let's play hangman!")
+
+play_again = "yes"
+
+while play_again == "yes":
+
+    word = random.choice(words)
+    guessed = []
+    lives = 6
+
+    while lives > 0:
+
+
+        display = ""
+        for letter in word:
+            if letter in guessed:
+                display += letter + " "
+            else:
+                display += "_ "
+
+        print(display)
+        print("Lives left:", lives)
+
+        guess = input("Guess a letter: ").lower()
+
+      
+        if len(guess) != 1 or not guess.isalpha():
+            print("Not a valid guess. Please enter a single letter.")
+            continue
+
+        if guess in guessed:
+            print("You already guessed that letter!")
+            continue
+
+        guessed.append(guess)
+
+        if guess in word:
+            if all(letter in guessed for letter in word):
+                print(word)
+                print("Word guessed, you've won!")
+                break
+        else:
+            lives -= 1
+            print("Letter not found!")
+            if lives == 0:
+                print("Out of lives, game over!")
+                print("The word was:", word)
+
+    play_again = input("Play again? (yes/no) ").lower()
+    while play_again != "yes" and play_again != "no":
+        play_again = input("Invalid input. Play again? (yes/no) ").lower()
