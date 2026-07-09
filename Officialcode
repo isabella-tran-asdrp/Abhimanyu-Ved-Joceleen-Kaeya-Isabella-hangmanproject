@@ -28,7 +28,7 @@ while play_again == "yes":
         guess = input("Guess a letter: ").lower()
 
       
-        if len(guess) != 1 or not guess.isalpha():
+        if guess.isalpha():
             print("Not a valid guess. Please enter a single letter.")
             continue
 
