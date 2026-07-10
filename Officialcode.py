@@ -31,11 +31,11 @@ while play_again == "yes":
             if answerguess == word:
                 print(word)
                 print("Word guessed, you've won!")
-                break
             else:
                 print("Wrong word!")
                 print("Game over!")
                 print("The word was:", word)
+            break
       
         elif len(guess) != 1 or not guess.isalpha():
             print("Not a valid guess. Please enter a single letter.")
