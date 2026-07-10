@@ -36,7 +36,14 @@ while play_again == "yes":
                 print("Game over!")
                 print("The word was:", word)
             break
-      
+
+        elif guess == "help":
+            print("Letters guessed: ", end="")
+            for letter in guessed:
+                print(letter, end=" ")
+            print()
+            continue
+        
         elif len(guess) != 1 or not guess.isalpha():
             print("Not a valid guess. Please enter a single letter.")
             continue
