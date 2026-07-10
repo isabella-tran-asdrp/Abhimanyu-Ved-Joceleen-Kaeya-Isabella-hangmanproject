@@ -26,16 +26,27 @@ while play_again == "yes":
         print("Lives left:", lives)
 
         guess = input("Guess a letter: ").lower()
-
+        if guess == "guess answer":
+            answerguess = input ("Enter your answer: ").lower()
+            if answerguess == word:
+                print(word)
+                print("Word guessed, you've won!")
+                break
+            else:
+                lives -= 1
+                print("Wrong word!")
+                if lives == 0:
+                    print("Out of lives, game over!")
+                    print("The word was:", word)
       
-        if not guess.isalpha():
+        elif len(guess) != 1 or not guess.isalpha():
             print("Not a valid guess. Please enter a single letter.")
             continue
 
-        if guess in guessed:
+        elif guess in guessed:
             print("You already guessed that letter!")
             continue
-
+        
         guessed.append(guess)
 
         if guess in word:
@@ -43,13 +54,12 @@ while play_again == "yes":
                 print(word)
                 print("Word guessed, you've won!")
                 break
-        else:
+        elif guess != "guess answer":
             lives -= 1
             print("Letter not found!")
             if lives == 0:
                 print("Out of lives, game over!")
                 print("The word was:", word)
-
     play_again = input("Play again? (yes/no) ").lower()
     while play_again != "yes" and play_again != "no":
         play_again = input("Invalid input. Play again? (yes/no) ").lower()
