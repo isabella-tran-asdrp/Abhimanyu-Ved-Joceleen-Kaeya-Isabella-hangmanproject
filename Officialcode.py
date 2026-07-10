@@ -33,11 +33,9 @@ while play_again == "yes":
                 print("Word guessed, you've won!")
                 break
             else:
-                lives -= 1
                 print("Wrong word!")
-                if lives == 0:
-                    print("Out of lives, game over!")
-                    print("The word was:", word)
+                print("Game over!")
+                print("The word was:", word)
       
         elif len(guess) != 1 or not guess.isalpha():
             print("Not a valid guess. Please enter a single letter.")
